@@ -20,6 +20,11 @@ pipeline {
       }
     }
     stage('Static Code Analysis') {
+      agent {
+        docker {
+          image 'maven:3.8.7-openjdk-17' // Maven + Java 17 official image
+        }
+      }
       environment {
         SONAR_URL = "http://54.89.205.181:9000"
       }
